@@ -8,6 +8,9 @@
     <Filter Include="Utility">
       <UniqueIdentifier>{d001c3a2-c96e-4d99-9c0c-a8a826e442b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="inc">
+      <UniqueIdentifier>{8103d985-782d-4e93-87af-c944d77d483e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utility\config.h">
@@ -35,6 +38,21 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="strings.h" />
+    <ClInclude Include="inc\enums.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\main.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\nativeCaller.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\natives.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\types.h">
+      <Filter>inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />

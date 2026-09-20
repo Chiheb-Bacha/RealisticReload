@@ -9,24 +9,30 @@ struct CVector {
 };
 
 class CPedInventory {
-  public:
+public:
+    virtual void fun0() = 0;
+    virtual void fun1() = 0;
+    virtual void fun2() = 0;
+    virtual void fun3() = 0;
+    virtual void fun4() = 0;
+    virtual void fun5() = 0;
     virtual ~CPedInventory() = 0;
-    virtual void SetWeaponAmmo( unsigned int weaponHash, unsigned int ammoCount ) = 0;
-    virtual void SetWeaponFiredTime( unsigned int weaponHash, int time ) = 0;
+    virtual void SetWeaponAmmo(unsigned int weaponHash, unsigned int ammoCount) = 0;
+    virtual void SetWeaponFiredTime(unsigned int weaponHash, int time) = 0;
     virtual void* GetOwner() = 0;
 };
 
 class CWeaponComponentClipInfo {
     char pad0[0x38];
-  public:
+public:
     virtual ~CWeaponComponentClipInfo() = 0;
     int clipSize; //0x40-0x44
 };
 
 class CWeaponComponentClip {
-  public:
+public:
     virtual ~CWeaponComponentClip() = 0;
-    CWeaponComponentClipInfo * info;
+    CWeaponComponentClipInfo* info;
 };
 
 struct CWheelWeapon {
@@ -62,7 +68,7 @@ struct CAmmoInfo {
     __int32 iAmmoMax100MP; //0x0034
     BYTE bAmmoFlags; //0x0038
     char _0x0039[7];
-    void * projectileInfo; //0x0040
+    void* projectileInfo; //0x0040
 
 };//Size=0x0158
 
@@ -84,8 +90,8 @@ struct CBoneForces {
 };//Size=0x0048
 
 struct CWeaponInfo {
-    void ** virtualTable; //0x0-0x8;
-    void * extensions; //0x8-0x10
+    void** virtualTable; //0x0-0x8;
+    void* extensions; //0x8-0x10
     DWORD dwNameHash;//0x10-0x14
     DWORD dwModelHash; //0x14-0x18
     DWORD dwAudioHash;
@@ -97,11 +103,12 @@ struct CWeaponInfo {
     DWORD dwExplosionHitBike; //0x30-0x34
     DWORD dwExplosionHitBoat; //0x34-0x38
     DWORD dwExplosionHitPlane; //0x38-0x3C
-    int iWeaponFireType; //0x3C-0x40
+    char pad0[0x18]; // all the offsets have been shifted by 0x18 (so next is 0x54, and after 0x58 and not 0x40 ...)
+    int iWeaponFireType; //0x54-0x58
     int iWeaponWheelSlot; //0x40-0x44
     DWORD dwGroupHash;//0x44-0x48
-    CAmmoInfo * pAmmoInfo; //0x48-0x50
-    CAimingInfo * pAimingInfo; //0x50-0x58
+    CAmmoInfo* pAmmoInfo; //0x48-0x50
+    CAimingInfo* pAimingInfo; //0x50-0x58
     int clipSize; //0x58-0x5C
     float fAccuracySpread; //0x5C-0x60
     float fAccurateModeAccuracyModifier; //0x60-0x64
@@ -130,7 +137,7 @@ struct CWeaponInfo {
     float fForceHitPed; //0x00BC
     float fForceHitVehicle; //0x00C0
     float fForceHitFlyingHeli; //0x00C4
-    CBoneForces * pBoneForces; //0xC8-0xD0
+    CBoneForces* pBoneForces; //0xC8-0xD0
     __int16 iBoneForceFrontCount; //0x00D0
     __int16 iBoneForceBackCount; //0x00D2
     char _0x00D4[4];
@@ -200,17 +207,17 @@ struct CWeaponInfo {
     float fLockOnRange; //0x258-0x25C
     float fMaxRange; //0x25C-0x260
     char pad6[0x5E0];
-    void *pWeaponTints; //0x840
+    void* pWeaponTints; //0x840
     char pad7[0x68];
 };
 
 struct CWeapon {
-    void * virtualTable; //0x0-0x8
-    void * extensions; //0x8-0x10
+    void* virtualTable; //0x0-0x8
+    void* extensions; //0x8-0x10
     CVector offset; //0x10-0x20
     CVector position; //0x20-0x30
     char pad0[0x10]; //0x30-0x40
-    CWeaponInfo * info; //0x40-0x48
+    CWeaponInfo* info; //0x40-0x48
     int activeTime; //0x48-0x4C
     int lastFiredTime; //0x4C-0x50
     int activeTime2; //0x50-0x54
@@ -219,11 +226,11 @@ struct CWeapon {
     __int64 pWeaponObject;
     CPedInventory* pInventoryPed; //0x60-=0x68
     CWeapon* pUnkWeapon; //self? //0x68-0x70
-    char pad2[0xB0]; //0x70-0x120
-    CWeaponComponentClip * clipComponent; //0x120-0x128
+    char pad2[0xB8]; //0x70-0x128
+    CWeaponComponentClip* clipComponent; //0x128-0x130
     char pad3[0x30];
-    void * pUnk; //0x158-0x160
+    void* pUnk; //0x160-0x168
     char pad4[0x60];
-    eWeaponAmmoState ammoState; //0x1C0
+    eWeaponAmmoState ammoState; //0x1C8
     DWORD weaponStateFlags; // 0x80 = silenced
 };

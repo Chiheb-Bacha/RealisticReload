@@ -13,28 +13,28 @@
 
 template <typename T>
 struct patch {
-    patch() : place( nullptr ), active( false ) {
+    patch() : place(nullptr), active(false) {
     }
 
-    patch( T * pPlace, std::vector<T> const& data ) : active( false ) {
+    patch(T* pPlace, std::vector<T> const& data) : active(false) {
         place = pPlace;
         newData = data;
-        originalData = std::vector<T>( place, place + newData.size() );
+        originalData = std::vector<T>(place, place + newData.size());
     }
 
     void install() {
-        std::copy( newData.begin(), newData.end(), stdext::checked_array_iterator<T*>( place, newData.size() ) );
+        std::copy(newData.begin(), newData.end(), place);
 
         active = true;
     }
 
     void remove() {
-        std::copy( originalData.begin(), originalData.end(), stdext::checked_array_iterator<T*>( place, originalData.size() ) );
+        std::copy(originalData.begin(), originalData.end(), place);
 
         active = false;
     }
 
-    BYTE * place;
+    BYTE* place;
     std::vector<T> newData, originalData;
     bool active;
 };

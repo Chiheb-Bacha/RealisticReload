@@ -1,54 +1,54 @@
 ﻿#pragma once
 
-static LPCTSTR en_US[] {
+static LPCTSTR en_US[]{
     "Reload"
 };
 
-static LPCTSTR fr_FR[] {
-    u8"Recharger"
+static LPCTSTR fr_FR[]{
+    "Recharger"
 };
 
-static LPCTSTR de_DE[] {
-    u8"Nachladen"
+static LPCTSTR de_DE[]{
+    "Nachladen"
 };
 
-static LPCTSTR it_IT[] {
-    u8"Ricarica"
+static LPCTSTR it_IT[]{
+    "Ricarica"
 };
 
-static LPCTSTR es_ES[] {
-    u8"Recargar"
+static LPCTSTR es_ES[]{
+    "Recargar"
 };
 
-static LPCTSTR pt_BR[] {
-    u8"Recarregar"
+static LPCTSTR pt_BR[]{
+    "Recarregar"
 };
 
-static LPCTSTR pl_PL[] {
-    u8"Przeładowanie"
+static LPCTSTR pl_PL[]{
+    "Przeładowanie"
 };
 
-static LPCTSTR ru_RU[] {
-    u8"Перезарядка оружия"
+static LPCTSTR ru_RU[]{
+    "Перезарядка оружия"
 };
 
-static LPCTSTR ko_KR[] {
-    u8"재장전"
+static LPCTSTR ko_KR[]{
+    "재장전"
 };
 
-static LPCTSTR zh_CN[] {
-    u8"補彈"
+static LPCTSTR zh_CN[]{
+    "補彈"
 };
 
-static LPCTSTR ja_JP[] {
-    u8"リロード"
+static LPCTSTR ja_JP[]{
+    "リロード"
 };
 
 enum GlobalTextEntry_t {
     RELOAD_TEXT
 };
 
-static LPCTSTR* langtext_array[11] {
+static LPCTSTR* langtext_array[11]{
     en_US,
     fr_FR,
     de_DE,
@@ -62,6 +62,6 @@ static LPCTSTR* langtext_array[11] {
     ja_JP
 };
 
-inline LPCTSTR getConstString( int langugageId, GlobalTextEntry_t textId ) {
+inline LPCTSTR getConstString(int langugageId, GlobalTextEntry_t textId) {
     return langtext_array[langugageId][textId];
 }
